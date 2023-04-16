@@ -9,7 +9,8 @@ class HomeProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CounterState ctst = Provider.of<CounterState>(context, listen: false);
+    CounterProviderState ctst =
+        Provider.of<CounterProviderState>(context, listen: false);
 
     print("build");
     return Scaffold(
@@ -17,7 +18,7 @@ class HomeProvider extends StatelessWidget {
         title: const Text("Counter"),
         centerTitle: true,
       ),
-      body: Consumer<CounterState>(
+      body: Consumer<CounterProviderState>(
         builder: (context, value, child) {
           return Center(
             child: Text(

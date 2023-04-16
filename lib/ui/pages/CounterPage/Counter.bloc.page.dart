@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:new_bloc/stateManagement/bloc/Counter/counter.bloc.dart';
 
 class CounterPage extends StatelessWidget {
   CounterPage({super.key});
@@ -14,16 +16,31 @@ class CounterPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Text(
-          "Counter is => 0",
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
+        child:
+            BlocBuilder<CounterBloc, CounterState>(builder: (context, state) {
+          if (state is CounterSuccessState || state is CounterIntialState) {
+            counter = state.counter;
+            return Text(" La valeur = $counter");
+          } else if (state is CounterErrorState) {
+            return Column(
+              children: [
+                Text("La valeur = ${state.counter}"),
+                Text("Error = ${state.errorMessage}"),
+              ],
+            );
+          } else {
+            return Container();
+          }
+        }),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              // Logique nous allons acceder au bloc et executer une action
+              context.read()<CounterBloc>().add(IncrementCounterEvent());
+            },
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
@@ -31,7 +48,9 @@ class CounterPage extends StatelessWidget {
             width: 10,
           ),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<CounterBloc>().add(DecrementCounterEvent());
+            },
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
           ),

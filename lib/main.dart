@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_bloc/stateManagement/Provider/Counter.provider.dart';
+import 'package:new_bloc/stateManagement/bloc/Counter/counter.bloc.dart';
 import 'package:new_bloc/stateManagement/bloc/Counter/counter.cubit.dart';
 import 'package:new_bloc/ui/pages/CounterPage/Counter.bloc.page.dart';
 import 'package:new_bloc/ui/pages/CounterPage/Counter.cubit.page.dart';
@@ -21,7 +22,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const RootView();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CounterBloc(),
+        )
+      ],
+      child: const RootView(),
+    );
   }
 }
 
@@ -80,7 +88,7 @@ class ProviderNotified extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => CounterState(),
+          create: (context) => CounterProviderState(),
         ),
       ],
       child: MaterialApp(
