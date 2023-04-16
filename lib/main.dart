@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_bloc/ui/pages/Counter.page.dart';
+import 'package:new_bloc/ui/pages/CounterPage/Counter.bloc.page.dart';
 import 'package:new_bloc/ui/pages/HomePage.dart';
 import 'package:new_bloc/ui/pages/ProfilePage.dart';
 import 'package:new_bloc/ui/pages/SettingsPage.dart';
