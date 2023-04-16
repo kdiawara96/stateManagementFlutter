@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_bloc/stateManagement/Provider/Counter.provider.dart';
+import 'package:new_bloc/stateManagement/bloc/Counter/counter.cubit.dart';
 import 'package:new_bloc/ui/pages/CounterPage/Counter.bloc.page.dart';
+import 'package:new_bloc/ui/pages/CounterPage/Counter.cubit.page.dart';
 import 'package:new_bloc/ui/pages/CounterPage/Counter.provider.page.dart';
 import 'package:new_bloc/ui/pages/HomePage.dart';
 import 'package:new_bloc/ui/pages/ProfilePage.dart';
@@ -39,6 +42,29 @@ class RootView extends StatelessWidget {
         '/setting': (context) => const SettingsPage(),
       },
       initialRoute: "/",
+    );
+  }
+}
+
+// -----------------------------CUBIT MAIN----------------------------------
+
+class BlocCubit extends StatelessWidget {
+  const BlocCubit({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CounterCubit(0),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          "/": (context) => HomeCubit(),
+        },
+      ),
     );
   }
 }
