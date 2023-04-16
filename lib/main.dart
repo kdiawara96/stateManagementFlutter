@@ -78,29 +78,29 @@ class BlocCubit extends StatelessWidget {
 }
 
 // -------------------------MyApp de Provider --------------------------------
-class ProviderNotified extends StatelessWidget {
-  const ProviderNotified({super.key});
+// class ProviderNotified extends StatelessWidget {
+//   const ProviderNotified({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    // ---------------------NOTIFIERPROVIDER------------------------------
+//   @override
+//   Widget build(BuildContext context) {
+//     // ---------------------NOTIFIERPROVIDER------------------------------
 
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => CounterProviderState(),
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        routes: {
-          "/": (context) => HomeProvider(),
-        },
-        title: 'Counter app',
-        theme: ThemeData(
-          primarySwatch: Colors.deepOrange,
-        ),
-      ),
-    );
-  }
-}
+//     return MultiProvider(
+//       providers: [
+//         ChangeNotifierProvider(
+//           create: (context) => CounterProviderState(),
+//         ),
+//       ],
+//       child: MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         routes: {
+//           "/": (context) => HomeProvider(),
+//         },
+//         title: 'Counter app',
+//         theme: ThemeData(
+//           primarySwatch: Colors.deepOrange,
+//         ),
+//       ),
+//     );
+//   }
+// }

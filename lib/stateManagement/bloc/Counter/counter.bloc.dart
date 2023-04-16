@@ -1,6 +1,4 @@
 // ACTION ou EVENT
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 
 abstract class CounterEvent {}

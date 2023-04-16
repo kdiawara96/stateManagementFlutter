@@ -21,7 +21,7 @@ class MainDrawerHeader extends StatelessWidget {
         children: [
           const CircleAvatar(
             radius: 50,
-            backgroundImage: AssetImage("images/profile.jpg"),
+            backgroundImage: AssetImage("assets/images/profile.jpg"),
           ),
           IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
         ],
